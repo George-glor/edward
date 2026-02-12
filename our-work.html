@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edward's Collision Center | Our Recent Projects</title>
+    <meta name="description" content="View our portfolio of collision repair and restoration projects at Edward's Collision Center in Torrance, CA.">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #d4af37;
+            --accent: #e63946;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header & Navigation - WITH LOGO */
+        header {
+            background: linear-gradient(135deg, var(--primary), #0d2547);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--secondary);
+        }
+        
+        nav a.active:after {
+            width: 100%;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: var(--primary);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .portfolio-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .portfolio-content {
+            padding: 25px;
+        }
+        
+        .portfolio-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            text-align: right;
+        }
+        
+        .testimonial-author h4 {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            color: var(--secondary);
+            min-width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-header {
+                padding: 80px 0 40px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - WITH LOGO -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/images/image.jpg" alt="Edward's Collision Center" " class="logo-img">
+                    <h1>Edward's Collision Center</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="our-work.html" class="active">Our Work</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact-us.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Our Recent Projects</h1>
+            <p class="page-description">Take a look at some of our recent collision repair and restoration projects. We're proud of the work we do and the results we deliver for our customers.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Recent Projects</h2>
+            <p>Take a look at some of our recent collision repair and restoration projects. We're proud of the work we do and the results we deliver for our customers.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('assets/images/project1.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3>Tesla Model 3 - Front End Repair</h3>
+                        <p>Complete front end repair and repainting after a collision. The vehicle was restored to factory condition with perfect color matching.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('assets/images/project2.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3>BMW X5 - Side Impact Repair</h3>
+                        <p>Structural repair and repainting following a side impact collision. The vehicle's frame was restored to factory specifications.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('assets/images/project3.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3>Toyota Camry - Rear End Repair</h3>
+                        <p>Complete rear end repair including structural work, painting, and interior restoration after a rear-end collision.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('assets/images/project4.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3>Mercedes-Benz E-Class - Hail Damage Repair</h3>
+                        <p>Paintless dent repair and repainting for hail damage. The vehicle was restored with minimal paint work required.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('assets/images/project5.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3>Jeep Wrangler - Full Restoration</h3>
+                        <p>Complete restoration after a major collision including frame repair, body work, painting, and interior restoration.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('assets/images/project6.jpg');"></div>
+                    <div class="portfolio-content">
+                        <h3>Honda Civic - Minor Dent Repair</h3>
+                        <p>Paintless dent repair for minor dents and scratches. The vehicle was restored with minimal disruption to the original paint.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Edward's Collision Center did an amazing job restoring my Tesla after a collision. The repair was flawless and the color matching was perfect. I was back on the road in no time."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Sarah Johnson</h4>
+                        <p>Tesla Model 3 Owner</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"I was impressed with the professionalism and expertise of the team at Edward's. They handled my insurance claim seamlessly and restored my BMW to better than new condition."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Michael Rodriguez</h4>
+                        <p>BMW X5 Owner</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The attention to detail and quality of work at Edward's Collision Center is unmatched. My Honda Civic was restored to factory condition with no visible signs of the previous damage."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4>Emily Chen</h4>
+                        <p>Honda Civic Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Edward's Collision Center</h3>
+                    <p>Professional auto repair and collision services in Torrance, CA. We specialize in bringing your vehicle back to factory condition with expert craftsmanship and attention to detail.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="our-work.html" class="active"><i class="fas fa-chevron-right"></i> Our Work</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="contact-us.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Location</h3>
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>23527 Susana Ave<br>Torrance, CA 90505</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>(310) 897-4317</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>edwardscollision@yahoo.com</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Mon-Fri: 8am-6pm<br>Sat: 9am-4pm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Edward's Collision Center. All rights reserved. | Edward Glor
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
